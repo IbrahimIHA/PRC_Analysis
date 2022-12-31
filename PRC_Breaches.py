@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 import numpy as np
+import requests as requests 
+
 st.set_page_config(layout="wide")
 # primaryColor = '#4A6DAB'
 # backgroundColor = '#282936'
@@ -10,7 +12,7 @@ st.set_page_config(layout="wide")
 st.title('PRC Breaches Analysis')
 st.write('Author: Ibrahim Ali')
 
-data = pd.read_csv('C:\\Users\\ihaib\\OneDrive\\Desktop\\Data Sandbox\\PRC_Clean.csv',usecols=['Date Made Public', 'Company', 'City', 'State',
+data = pd.read_csv('https://github.com/IbrahimIHA/PRC_Analysis/raw/main/PRC_Clean.csv',usecols=['Date Made Public', 'Company', 'City', 'State',
        'Type of breach', 'Type of organization', 'Total Records',
        'Description of incident', 'Year of Breach', 'Latitude', 'Longitude'])
 file=data.to_csv()
