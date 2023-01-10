@@ -55,7 +55,12 @@ col1.write('Organization Classification: ' + max_info['Type of organization'].ma
 col1.write('Date Made Public: ' + str(max_info['Date Made Public'].max()))
 col1.write('Breach Type: ' + str(max_info['Type of breach'].max()))
 col1.write('Records Lost: ' + str(max_info['Total Records'].max()))
-col1.write('Location: ' + max_info['City'].max() + ', ' + max_info['State'].max())
+if max_info['City'].isnull().values.any():
+    col1.write('Location: Unknown')
+elif max_info['State'].isnull().values.any():
+    col1.write('Location: Unknown')
+else:
+    col1.write('Location: ' + str(max_info['City'].max()) + ', ' + str(max_info['State'].max()))
 col2.subheader('Records Lost Based On Organization Type')
 col2.bar_chart(Org_Sum)
 st.download_button(label="Download Cleaned Dataset", data=file, file_name='PRC_Breaches.csv')
